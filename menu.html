@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mike Dianna's Grill Room — Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#241b15;
+    --charcoal-2:#2f251d;
+    --parchment:#f6ecdb;
+    --parchment-2:#efe1c8;
+    --ember:#b6512f;
+    --ember-dark:#8c3b21;
+    --sage:#75835a;
+    --brass:#c9a15a;
+    --line: rgba(36,27,21,0.16);
+    --line-light: rgba(246,236,219,0.22);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--charcoal);
+    font-family:'Jost', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{background:var(--ember); color:var(--parchment);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(ellipse at 20% -10%, rgba(182,81,47,0.35), transparent 55%),
+      radial-gradient(ellipse at 85% 10%, rgba(117,131,90,0.18), transparent 50%),
+      linear-gradient(180deg, #241b15 0%, #1b140f 100%);
+    color:var(--parchment);
+    padding:5rem 1.5rem 4rem;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 80px);
+    pointer-events:none;
+  }
+  .hero-eyebrow{
+    font-family:'Jost', sans-serif;
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    font-size:0.7rem;
+    color:var(--brass);
+    margin-bottom:1.1rem;
+    position:relative;
+  }
+  .hero h1{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-style:normal;
+    font-size:clamp(2.6rem, 7vw, 4.6rem);
+    line-height:1.02;
+    margin:0 0 0.6rem;
+    letter-spacing:-0.01em;
+    position:relative;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--ember);
+    opacity:0.92;
+  }
+  .hero-sub{
+    font-size:0.95rem;
+    color:rgba(246,236,219,0.7);
+    max-width:34rem;
+    margin:0 auto;
+    line-height:1.7;
+    letter-spacing:0.01em;
+    position:relative;
+  }
+  .hero-badge{
+    margin:2.2rem auto 0;
+    display:inline-flex;
+    align-items:center;
+    gap:0.6rem;
+    padding:0.55rem 1.3rem;
+    border:1px solid rgba(201,161,90,0.4);
+    border-radius:999px;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--brass);
+    position:relative;
+  }
+  .hero-badge svg{width:14px; height:14px; opacity:0.9;}
+
+  /* ---------- NAV ---------- */
+  .menu-nav{
+    position:sticky; top:0; z-index:20;
+    background:rgba(246,236,219,0.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:center;
+    gap:0;
+    overflow-x:auto;
+    padding:0 1rem;
+    scrollbar-width:none;
+  }
+  .menu-nav::-webkit-scrollbar{display:none;}
+  .menu-nav a{
+    flex:0 0 auto;
+    padding:0.9rem 1.1rem;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--charcoal);
+    opacity:0.55;
+    white-space:nowrap;
+    border-bottom:2px solid transparent;
+    transition:opacity 0.2s ease, border-color 0.2s ease;
+  }
+  .menu-nav a:hover{opacity:1; border-color:var(--ember);}
+
+  /* ---------- LAYOUT ---------- */
+  .wrap{max-width:920px; margin:0 auto; padding:0 1.25rem;}
+
+  .notice-strip{
+    text-align:center;
+    padding:1.4rem 1rem;
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ember-dark);
+    border-bottom:1px dashed var(--line);
+  }
+
+  section.course{
+    padding:3.4rem 0 1rem;
+    border-bottom:1px solid var(--line);
+  }
+  section.course:last-of-type{border-bottom:none;}
+
+  .course-head{
+    text-align:center;
+    margin-bottom:2.4rem;
+  }
+  .course-head .kicker{
+    display:block;
+    font-size:0.68rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--sage);
+    margin-bottom:0.5rem;
+  }
+  .course-head h2{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:clamp(1.9rem, 5vw, 2.6rem);
+    margin:0;
+    position:relative;
+    display:inline-block;
+  }
+  .course-head .rule{
+    width:64px; height:2px;
+    background:var(--ember);
+    margin:0.9rem auto 0;
+    position:relative;
+  }
+  .course-head .rule::before,
+  .course-head .rule::after{
+    content:"";
+    position:absolute; top:50%;
+    width:4px; height:4px;
+    background:var(--brass);
+    border-radius:50%;
+    transform:translateY(-50%);
+  }
+  .course-head .rule::before{left:-12px;}
+  .course-head .rule::after{right:-12px;}
+
+  .columns{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0 3.2rem;
+  }
+  @media (max-width:720px){
+    .columns{grid-template-columns:1fr; gap:0;}
+  }
+
+  .subgroup{margin-bottom:2.1rem;}
+  .subgroup-title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.05rem;
+    letter-spacing:0.02em;
+    margin:0 0 0.9rem;
+    padding-bottom:0.4rem;
+    border-bottom:1px solid var(--line);
+    color:var(--ember-dark);
+  }
+  .subgroup-note{
+    font-size:0.8rem;
+    font-style:italic;
+    color:rgba(36,27,21,0.6);
+    margin:-0.5rem 0 1rem;
+  }
+
+  .item{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:0.4rem 0.8rem;
+    align-items:baseline;
+    margin-bottom:1.15rem;
+  }
+  .item-name{
+    font-weight:500;
+    font-size:0.98rem;
+    letter-spacing:0.01em;
+    display:flex;
+    align-items:baseline;
+    gap:0.4rem;
+    flex-wrap:wrap;
+  }
+  .tag{
+    font-size:0.62rem;
+    font-style:italic;
+    color:var(--sage);
+    border:1px solid rgba(117,131,90,0.4);
+    padding:0.05rem 0.35rem;
+    border-radius:3px;
+    letter-spacing:0.04em;
+  }
+  .item-price{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color:var(--ember-dark);
+    font-size:1rem;
+    white-space:nowrap;
+  }
+  .item-desc{
+    grid-column:1 / -1;
+    font-size:0.83rem;
+    color:rgba(36,27,21,0.62);
+    line-height:1.55;
+    margin-top:-0.35rem;
+  }
+
+  .callout{
+    text-align:center;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.05rem;
+    color:var(--ember-dark);
+    padding:1.6rem 1rem;
+    margin:0.5rem 0 0;
+  }
+
+  .sauce-note{
+    text-align:center;
+    font-size:0.78rem;
+    color:rgba(36,27,21,0.6);
+    max-width:34rem;
+    margin:0.5rem auto 0;
+    line-height:1.6;
+  }
+  .sauce-note strong{color:var(--charcoal); font-weight:600;}
+
+  /* ---------- PICKLES TABLE ---------- */
+  .pickles{
+    margin-top:1rem;
+  }
+  .pickles table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.85rem;
+  }
+  .pickles th{
+    font-family:'Jost';
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    font-size:0.65rem;
+    text-align:right;
+    padding:0.5rem 0.3rem;
+    color:var(--sage);
+    border-bottom:1px solid var(--line);
+  }
+  .pickles th:first-child{text-align:left;}
+  .pickles td{
+    padding:0.55rem 0.3rem;
+    text-align:right;
+    border-bottom:1px dotted var(--line);
+  }
+  .pickles td:first-child{text-align:left; font-weight:500;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--charcoal);
+    color:rgba(246,236,219,0.65);
+    text-align:center;
+    padding:3.2rem 1.5rem 2.4rem;
+    margin-top:2rem;
+  }
+  footer .mark{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.3rem;
+    color:var(--brass);
+    margin-bottom:0.6rem;
+  }
+  footer p{
+    font-size:0.75rem;
+    letter-spacing:0.06em;
+    line-height:1.8;
+    margin:0.2rem 0;
+  }
+  footer .disclaimer{
+    max-width:32rem;
+    margin:1.6rem auto 0;
+    font-size:0.68rem;
+    opacity:0.55;
+    line-height:1.7;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="hero-eyebrow">Hardwood Grilled · Est. on the Coast</span>
+  <h1>Mike Dianna's<br><em>Grill Room</em></h1>
+  <p class="hero-sub">She-crab soup, pickles from our own brine, and steaks aged and cut in house — grilled the slow way, over native hardwoods.</p>
+  <div class="hero-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg>
+    Breakfast &amp; Lunch 9–4 · Dinner 4–9
+  </div>
+</header>
+
+<nav class="menu-nav">
+  <a href="#breakfast">Breakfast</a>
+  <a href="#starters">Starters &amp; Shareables</a>
+  <a href="#salads">Salads</a>
+  <a href="#lunch">Lunch</a>
+  <a href="#entrees">Entrées</a>
+  <a href="#steaks">Steaks &amp; Chops</a>
+  <a href="#pickles">Pickles To Go</a>
+  <a href="#kids">Kids</a>
+</nav>
+
+<div class="notice-strip">Consuming raw or undercooked meat, seafood, shellfish, or eggs may increase your risk of foodborne illness.</div>
+
+<main class="wrap">
+
+  <!-- BREAKFAST -->
+  <section class="course" id="breakfast">
+    <div class="course-head">
+      <span class="kicker">Morning</span>
+      <h2>Breakfast</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="columns">
+      <div>
+        <div class="subgroup">
+          <div class="subgroup-title">Biscuit Basket</div>
+          <p class="subgroup-note">Basket of 4 – 10 · Basket of 8 – 18 · with our housemade preserves</p>
+
+          <div class="item"><span class="item-name">Corolla Breakfast</span><span class="item-price">11</span><span class="item-desc">Two eggs, home fries, buttermilk biscuit</span></div>
+          <div class="item"><span class="item-name">Biscuit Sandwich</span><span class="item-price">12</span><span class="item-desc">Fried egg, griddled tomato, white American, buttermilk biscuit, home fries</span></div>
+          <div class="item"><span class="item-name">Grill Room Breakfast</span><span class="item-price">18</span><span class="item-desc">Two eggs, Leidy's bacon, Larry's sausage patty, buttermilk biscuit, home fries · add country ham 21, add filet kabob 33</span></div>
+          <div class="item"><span class="item-name">Biscuits and Gravy</span><span class="item-price">14</span><span class="item-desc">Buttermilk biscuits, our sausage gravy, two eggs, fresh fruit</span></div>
+          <div class="item"><span class="item-name">Breakfast Bowl <span class="tag">gf</span></span><span class="item-price">16</span><span class="item-desc">Cheesy eggs, spinach, peppers, bacon crumble, stone ground grits</span></div>
+          <div class="item"><span class="item-name">Big Meaty Sandwich</span><span class="item-price">15</span><span class="item-desc">Hand pattied sausage, Leidy's bacon, fried egg, white American, buttered English muffin, home fries</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="item"><span class="item-name">Grill Room Benny</span><span class="item-price">18</span><span class="item-desc">Griddled English muffin, country ham, spinach, poached eggs, hollandaise, home fries · with crabcake 35</span></div>
+          <div class="item"><span class="item-name">Lox Benny</span><span class="item-price">18</span><span class="item-desc">House cured salmon, tomato, spinach, poached eggs, hollandaise, home fries · with crabcake 35</span></div>
+          <div class="item"><span class="item-name">Veggie Omelette</span><span class="item-price">17</span><span class="item-desc">Three eggs, spinach, tomato, mushroom, onion, buttermilk biscuit, stone ground grits</span></div>
+          <div class="item"><span class="item-name">Handy Landy Omelette</span><span class="item-price">18</span><span class="item-desc">Three eggs, bacon, sausage, country ham, cheddar, buttermilk biscuit, stone ground grits</span></div>
+          <div class="item"><span class="item-name">Lox Omelette</span><span class="item-price">18</span><span class="item-desc">Three eggs, house cured lox, peppers, spinach, buttermilk biscuit, stone ground grits</span></div>
+          <div class="item"><span class="item-name">Grill Room Chicken Biscuit</span><span class="item-price">18</span><span class="item-desc">Split buttermilk biscuit, spicy fried chicken, our sausage gravy, fresh fruit</span></div>
+          <div class="item"><span class="item-name">Crabcake and Eggs</span><span class="item-price">25</span><span class="item-desc">Broiled crabcake, two eggs, stone ground grits, corn salsa</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="subgroup">
+          <div class="item"><span class="item-name">Pancakes</span><span class="item-price">10</span><span class="item-desc">Add chocolate chips or blueberries 13 · a pair, powdered sugar, maple syrup</span></div>
+          <div class="item"><span class="item-name">Good Morning Burger</span><span class="item-price">15</span><span class="item-desc">Hand pattied Angus beef, cheese, fried egg, buttered kaiser, home fries</span></div>
+          <div class="item"><span class="item-name">Shrimp and Grits <span class="tag">gf</span></span><span class="item-price">21/27</span><span class="item-desc">Select shrimp, spinach, peppers, ham, Meg's sweet and tangy sauce</span></div>
+          <div class="item"><span class="item-name">Tomato Pie</span><span class="item-price">17</span><span class="item-desc">Vine ripe tomatoes, fresh basil, mozzarella cheese, side salad</span></div>
+          <div class="item"><span class="item-name">Steak and Eggs</span><span class="item-price">25</span><span class="item-desc">Marinated filet mignon kabob, two eggs, stone ground grits, biscuit</span></div>
+          <div class="item"><span class="item-name">Foxxy Loxxy</span><span class="item-price">18</span><span class="item-desc">House cured salmon, whipped cream cheese, pickled veggies, capers, tomato, English muffin</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Sides</div>
+          <table style="width:100%; font-size:0.85rem; border-collapse:collapse;">
+            <tr><td style="padding:0.3rem 0;">Leidy's Bacon <span class="tag">gf</span></td><td style="text-align:right;">5</td></tr>
+            <tr><td style="padding:0.3rem 0;">Stone Ground Grits <span class="tag">gf</span></td><td style="text-align:right;">3</td></tr>
+            <tr><td style="padding:0.3rem 0;">Sausage Patty <span class="tag">gf</span></td><td style="text-align:right;">5</td></tr>
+            <tr><td style="padding:0.3rem 0;">Home Fries <span class="tag">gf</span></td><td style="text-align:right;">3</td></tr>
+            <tr><td style="padding:0.3rem 0;">Pancake</td><td style="text-align:right;">5</td></tr>
+            <tr><td style="padding:0.3rem 0;">Fresh Fruit <span class="tag">gf</span></td><td style="text-align:right;">6</td></tr>
+            <tr><td style="padding:0.3rem 0;">Country Ham <span class="tag">gf</span></td><td style="text-align:right;">5</td></tr>
+            <tr><td style="padding:0.3rem 0;">Buttermilk Biscuit, Toast, or English Muffin</td><td style="text-align:right;">2</td></tr>
+            <tr><td style="padding:0.3rem 0;">Cole Slaw <span class="tag">gf</span></td><td style="text-align:right;">3</td></tr>
+            <tr><td style="padding:0.3rem 0;">Side Salad <span class="tag">gf</span></td><td style="text-align:right;">5</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STARTERS / SHAREABLES -->
+  <section class="course" id="starters">
+    <div class="course-head">
+      <span class="kicker">To Begin</span>
+      <h2>Starters &amp; Shareables</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="columns">
+      <div>
+        <div class="subgroup">
+          <div class="subgroup-title">Shareables</div>
+          <div class="item"><span class="item-name">Basket of Fries <span class="tag">gf</span></span><span class="item-price">15</span><span class="item-desc">Hand cut, honey mustard, our famous ranch, ketchup</span></div>
+          <div class="item"><span class="item-name">Grilled Green Onion Dip</span><span class="item-price">14</span><span class="item-desc">Grilled green onions, fresh spinach, mixed cheeses, Ritz crackers</span></div>
+          <div class="item"><span class="item-name">Pickles and Cheese</span><span class="item-price">23</span><span class="item-desc">Snow Camp, herb encrusted Manchego, Bay Blue (CA), pickled watermelon rinds, pickled peaches, dill pickle slices</span></div>
+          <div class="item"><span class="item-name">Meatballs</span><span class="item-price">17</span><span class="item-desc">Half pound of house ground USDA Prime beef and local pork, tomato sauce, Parmesan cheese</span></div>
+          <div class="item"><span class="item-name">Cucumber Sampler <span class="tag">gf</span></span><span class="item-price">17</span><span class="item-desc">Dill, bread and butter, sour, sweet mustard, Korean spicy</span></div>
+          <div class="item"><span class="item-name">Picklish Delight <span class="tag">gf</span></span><span class="item-price">19</span><span class="item-desc">Excite your palate with 9 different pickled items — corn, peaches, green beans, okra, peas, collards, giardiniera, cauliflower, garlic dill green beans</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="subgroup">
+          <div class="subgroup-title">Starters</div>
+          <div class="item"><span class="item-name">She Crab Soup</span><span class="item-price">11/15</span><span class="item-desc">Lump crabmeat, fresh dill, cream</span></div>
+          <div class="item"><span class="item-name">Soup of the Day</span><span class="item-price">MP</span><span class="item-desc">Ask your server for details</span></div>
+          <div class="item"><span class="item-name">Shrimp Cake</span><span class="item-price">12</span><span class="item-desc">Shrimp, Ritz, special seasonings, broiled, Old Bay tartar</span></div>
+          <div class="item"><span class="item-name">Crab Cake</span><span class="item-price">23</span><span class="item-desc">Our famous special blend, broiled, corn salsa</span></div>
+          <div class="item"><span class="item-name">Tomato Pie</span><span class="item-price">16</span><span class="item-desc">Vine ripe tomatoes, fresh basil, mozzarella cheese</span></div>
+          <div class="item"><span class="item-name">Mussels</span><span class="item-price">19</span><span class="item-desc">Prince Edward Island mussels, sautéed, ginger, lime &amp; cilantro butter sauce</span></div>
+          <div class="item"><span class="item-name">Pickled Shrimp</span><span class="item-price">15</span><span class="item-desc">Half pound select shrimp, cooked and marinated in our own pickling spice blend, served over mixed greens with celery, capers and onions</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SALADS -->
+  <section class="course" id="salads">
+    <div class="course-head">
+      <span class="kicker">Greens &amp; Farm</span>
+      <h2>Salads</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="columns">
+      <div>
+        <div class="item"><span class="item-name">House Salad <span class="tag">gf</span></span><span class="item-price">10</span><span class="item-desc">Mixed greens, fresh vegetables, pickled carrots, honey citrus vinaigrette or ranch or creamy French</span></div>
+        <div class="item"><span class="item-name">Grill Room Wedge</span><span class="item-price">15</span><span class="item-desc">Iceberg, tomato, Grill Room's creamy blue cheese, bacon crumbles</span></div>
+        <div class="item"><span class="item-name">Seabird Farms Salad</span><span class="item-price">16</span><span class="item-desc">Fresh produce from a local farm — mixed greens, local pickled beets and cauliflower, tomatoes, pickled corn, creamy sherry vinaigrette</span></div>
+      </div>
+      <div>
+        <div class="item"><span class="item-name">Grill Room Salad</span><span class="item-price">15 <span style="font-size:0.7rem; color:rgba(36,27,21,0.5); font-weight:400;">· add chicken 24</span></span><span class="item-price"></span></div>
+        <div class="item-desc" style="margin-top:-0.9rem; margin-bottom:1.15rem;">Mixed greens, grilled pineapple, tomatoes, cucumbers, pickled red onions, blue cheese crumbles, honey citrus vinaigrette</div>
+        <div class="item"><span class="item-name">Salmon Power Salad</span><span class="item-price">27</span><span class="item-desc">Hardwood grilled salmon, pickled red onions, tomatoes, cucumbers, pickled local beans, feta cheese crumbles, chia seed white balsamic vinaigrette</span></div>
+        <p class="subgroup-note" style="margin-top:1.2rem;">Add chicken 10 · salmon 15 · pickled shrimp 15 · herb and garlic marinated filet mignon kabob 20 to any salad</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LUNCH -->
+  <section class="course" id="lunch">
+    <div class="course-head">
+      <span class="kicker">Midday</span>
+      <h2>Lunch</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="columns">
+      <div>
+        <div class="subgroup">
+          <div class="subgroup-title">Sandwiches</div>
+          <div class="item"><span class="item-name">BBQ Sandwich</span><span class="item-price">15</span><span class="item-desc">Eastern NC style house smoked pork barbeque, cole slaw, buttered kaiser, hand cut fries</span></div>
+          <div class="item"><span class="item-name">Steakhouse Burger</span><span class="item-price">20</span><span class="item-desc">9 ounce hand pattied hardwood grilled Angus beef, cheese, buttered kaiser, hand cut fries</span></div>
+          <div class="item"><span class="item-name">Black Bean Burger</span><span class="item-price">15</span><span class="item-desc">Black beans, Grill Room spices, pickled red onion, lettuce, tomato, buttered kaiser, side salad</span></div>
+          <div class="item"><span class="item-name">Meatball Hoagie</span><span class="item-price">19</span><span class="item-desc">Beef/pork meatballs, marinara, mozzarella, hand cut fries</span></div>
+          <div class="item"><span class="item-name">Shrimp Cake BLT</span><span class="item-price">19</span><span class="item-desc">Broiled shrimp cake, Leidy's bacon, lettuce, tomato, Old Bay tartar, Texas toast, hand cut fries</span></div>
+          <div class="item"><span class="item-name">Grilled Chicken Sandwich</span><span class="item-price">18</span><span class="item-desc">Chicken breast, hardwood grilled, country ham, Swiss cheese, buttered kaiser, hand cut fries</span></div>
+          <div class="item"><span class="item-name">Grilled Tuna Sandwich</span><span class="item-price">19</span><span class="item-desc">Hardwood grilled tuna, pickled vegetable slaw, buttered kaiser, hand cut fries</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="subgroup">
+          <div class="subgroup-title">Entrées</div>
+          <div class="item"><span class="item-name">Soup, Salad, Side</span><span class="item-price">15</span><span class="item-desc">Featured soup, side salad, choice of side</span></div>
+          <div class="item"><span class="item-name">Foxxy Loxxy</span><span class="item-price">18</span><span class="item-desc">House cured salmon, whipped cream cheese, pickled veggies, capers, tomato, English muffin</span></div>
+          <div class="item"><span class="item-name">Tomato Pie</span><span class="item-price">17</span><span class="item-desc">Vine ripe tomatoes, fresh basil, mozzarella cheese, side salad</span></div>
+          <div class="item"><span class="item-name">Fried Fish</span><span class="item-price">17/25</span><span class="item-desc">Lightly fried flounder, cole slaw, hand cut fries, grilled lemon, spicy remoulade</span></div>
+          <div class="item"><span class="item-name">Crabcake</span><span class="item-price">25/49</span><span class="item-desc">Our famous special blend, broiled, corn salsa, mashed potatoes, roasted vegetables</span></div>
+          <div class="item"><span class="item-name">Fresh Catch</span><span class="item-price">MP</span><span class="item-desc">Fresh fish, roasted vegetables, mashed potatoes, topping of the day</span></div>
+          <div class="item"><span class="item-name">Shrimp and Grits</span><span class="item-price">21/27</span><span class="item-desc">Select shrimp, spinach, peppers, ham, Meg's sweet and tangy sauce</span></div>
+          <div class="item"><span class="item-name">Pasta of the Day</span><span class="item-price">MP</span><span class="item-desc">Ask your server for details</span></div>
+        </div>
+        <div class="subgroup">
+          <div class="subgroup-title">Kids Menu</div>
+          <div class="item"><span class="item-name">Chicken Tenders</span><span class="item-price">10/17</span></div>
+          <div class="item"><span class="item-name">Grilled Chicken Breast</span><span class="item-price">11</span></div>
+          <div class="item"><span class="item-name">Grilled Cheese</span><span class="item-price">8</span></div>
+          <div class="item"><span class="item-name">Burger</span><span class="item-price">15</span></div>
+          <div class="item"><span class="item-name">Meatball Pasta</span><span class="item-price">16/22</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTREES -->
+  <section class="course" id="entrees">
+    <div class="course-head">
+      <span class="kicker">Dinner</span>
+      <h2>Entrées</h2>
+      <div class="rule"></div>
+    </div>
+    <p class="callout">Featured white — Txakoli Etxaniz, Basque Country, Spain 2025 · 14/glass</p>
+    <div class="columns">
+      <div>
+        <div class="item"><span class="item-name">Shrimp Cake</span><span class="item-price">22/32</span><span class="item-desc">Our special blend, broiled, Old Bay tartar, black and white rice, green beans</span></div>
+        <div class="item"><span class="item-name">Fresh Catch <span class="tag">gf</span></span><span class="item-price">MP</span><span class="item-desc">Ask your server for details</span></div>
+        <div class="item"><span class="item-name">Best of Both Worlds</span><span class="item-price">40</span><span class="item-desc">One broiled shrimp cake, one broiled crabcake, Old Bay tartar, corn salsa, black and white rice, green beans</span></div>
+        <div class="item"><span class="item-name">Shrimp and Grits <span class="tag">gf</span></span><span class="item-price">33</span><span class="item-desc">Select shrimp, country ham, peppers, spinach, Meg's famous sauce, stone ground grits</span></div>
+        <div class="item"><span class="item-name">Pasta of the Day</span><span class="item-price">46</span><span class="item-desc">USDA Prime NY strip, grilled sliced thin and sautéed, local butter beans, heirloom tomatoes, fresh spinach, herb pesto cream sauce, fusilli, Parmesan</span></div>
+        <div class="item"><span class="item-name">North Atlantic Salmon <span class="tag">gf</span></span><span class="item-price">36</span><span class="item-desc">Hardwood grilled, grilled peach salsa, roasted vegetables, black and white rice</span></div>
+      </div>
+      <div>
+        <div class="item"><span class="item-name">Yellowfin Tuna <span class="tag">gf</span></span><span class="item-price">34</span><span class="item-desc">Black and white sesame seed encrusted, pan seared, citrus soy sesame herb sauce, pickled vegetable slaw, black and white rice, roasted vegetables</span></div>
+        <div class="item"><span class="item-name">Seafood Pasta</span><span class="item-price">36</span><span class="item-desc">Fresh fish, select shrimp, mussels, spinach, cioppino sauce, fusilli, Parmesan</span></div>
+        <div class="item"><span class="item-name">Crab Cake</span><span class="item-price">29/47</span><span class="item-desc">Our special blend, broiled, corn salsa, black and white rice, green beans</span></div>
+        <div class="item"><span class="item-name">Grill Room Veggies <span class="tag">gf</span></span><span class="item-price">20</span><span class="item-desc">Grilled cabbage steak, grilled cauliflower steak, grilled carrot, black and white rice, lemon tahini dressing</span></div>
+        <div class="item"><span class="item-name">Roast Chicken <span class="tag">gf</span></span><span class="item-price">24</span><span class="item-desc">Peruvian marinated, hard wood grilled, semi boneless airline chicken breast, spicy green sauce, black and white rice, green beans</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEAKS -->
+  <section class="course" id="steaks">
+    <div class="course-head">
+      <span class="kicker">Hardwood Grilled</span>
+      <h2>Steaks &amp; Chops</h2>
+      <div class="rule"></div>
+    </div>
+    <p class="callout">Featured red — Morgan, Cotes de Crow's, Monterey, 2021 · 15/60 · Grenache, Syrah, Mourvèdre, Tempranillo</p>
+    <p class="subgroup-note" style="text-align:center; margin-bottom:2rem;">All our meats are hand selected, aged and cut in house, marinated, seasoned and grilled over native hardwoods.</p>
+    <div class="columns">
+      <div>
+        <div class="item"><span class="item-name">Pork Loin <span class="tag">gf</span></span><span class="item-price">25</span><span class="item-desc">Twice grilled, sliced, stone ground mustard cream sauce, mashed potatoes, green beans</span></div>
+        <div class="item"><span class="item-name">Filet Mignon 6oz / 10oz <span class="tag">gf</span></span><span class="item-price">44/59</span><span class="item-desc">Hand cut, very tender, mashed potatoes, green beans</span></div>
+        <div class="item"><span class="item-name">Ribeye 16oz <span class="tag">gf</span></span><span class="item-price">69</span><span class="item-desc">USDA Prime, Angus, extremely flavorful, mashed potatoes, roasted vegetables</span></div>
+        <div class="item"><span class="item-name">Pork Chop <span class="tag">gf</span></span><span class="item-price">37</span><span class="item-desc">Duroc tomahawk pork rib chop, mashed potatoes, green beans</span></div>
+      </div>
+      <div>
+        <div class="item"><span class="item-name">NY Strip 12oz <span class="tag">gf</span></span><span class="item-price">58</span><span class="item-desc">USDA Prime, certified Black Angus, mashed potatoes, roasted vegetables</span></div>
+        <div class="item"><span class="item-name">Cowboy Steak <span class="tag">gf</span></span><span class="item-price">89</span><span class="item-desc">USDA Prime 24 ounce bone-in ribeye, mashed potatoes, green beans</span></div>
+        <div class="item"><span class="item-name">Surf and Turf</span><span class="item-price">42</span><span class="item-desc">Herb and garlic marinated filet mignon kabob, broiled shrimp cake, Old Bay tartar, mashed potatoes, green beans</span></div>
+      </div>
+    </div>
+    <p class="sauce-note"><strong>Complimentary sauces:</strong> creamy horseradish, Grill Room steak sauce &nbsp;·&nbsp; <strong>Additions $4:</strong> bearnaise butter, roasted garlic butter, mustard cream sauce &nbsp;·&nbsp; <strong>$6:</strong> sautéed mushrooms, sautéed onions</p>
+  </section>
+
+  <!-- PICKLES -->
+  <section class="course" id="pickles">
+    <div class="course-head">
+      <span class="kicker">Take Home</span>
+      <h2>Grill Room Pickles To Go</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="pickles">
+      <table>
+        <tr><th>Item</th><th>1/2 pt</th><th>Pint</th><th>Quart</th></tr>
+        <tr><td>Dill Pickle Slices</td><td>7</td><td>12</td><td>16</td></tr>
+        <tr><td>Bread and Butter Pickles</td><td>7</td><td>12</td><td>16</td></tr>
+        <tr><td>Giardiniera</td><td>9</td><td>18</td><td>28</td></tr>
+        <tr><td>Pickled Watermelon Rinds</td><td>10</td><td>16</td><td>22</td></tr>
+        <tr><td>Pickled Red Onions</td><td>5</td><td>8</td><td>12</td></tr>
+        <tr><td>Pickled Peaches</td><td>10</td><td>16</td><td>22</td></tr>
+        <tr><td>Pickled Carrots</td><td>5</td><td>8</td><td>12</td></tr>
+        <tr><td>Garlic Dill Green Beans</td><td>8</td><td>14</td><td>20</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- KIDS -->
+  <section class="course" id="kids" style="border-bottom:none;">
+    <div class="course-head">
+      <span class="kicker">Little Ones</span>
+      <h2>Kids</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="columns">
+      <div>
+        <div class="item"><span class="item-name">Little Corolla Breakfast</span><span class="item-price">8</span><span class="item-desc">One scrambled egg, home fries, biscuit</span></div>
+        <div class="item"><span class="item-name">Pancake and Bacon</span><span class="item-price">9</span><span class="item-desc">One pancake, Leidy's bacon</span></div>
+        <div class="item"><span class="item-name">Cheese Omelette</span><span class="item-price">11</span><span class="item-desc">White American cheese, home fries, biscuit</span></div>
+      </div>
+      <div>
+        <div class="item"><span class="item-name">Chicken Tenders</span><span class="item-price">10/17</span><span class="item-desc">Home fries</span></div>
+        <div class="item"><span class="item-name">Fruit Cup</span><span class="item-price">9</span><span class="item-desc">Today's fruit offering, buttermilk biscuit</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="mark">Mike Dianna's Grill Room</div>
+  <p>Hand selected meats · Aged and cut in house · Grilled over native hardwoods</p>
+  <p class="disclaimer">*Consuming raw or undercooked meat, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions. GF = gluten free preparation available — please inform your server of any allergies.</p>
+</footer>
+
+</body>
+</html>
